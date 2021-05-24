@@ -34,13 +34,13 @@ module monitor (rst, change, on_off, clk, counter_out);
 		else 
 			begin
 			if (change==0'b0)
-				counter_out=counter_out;
+				counter_out<=counter_out;
 			else 
 				begin 
 				if (on_off)
-					counter_out=counter_out+1'b1;
+					counter_out<=counter_out+1'b1;
 				else
-					counter_out=counter_out-1'b1;
+					counter_out<=counter_out-1'b1;
 	end
 	end
 	end     
