@@ -93,7 +93,7 @@ end
       end
 //Todo: Instantiate counter module
 	monitor monitor1 (
-	.change (change),
+	.change (change), 
 	.on_off (on_off),
 	.rst (rst),
 	.counter_out (counter_out)

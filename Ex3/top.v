@@ -27,7 +27,7 @@ module monitor (rst, change, on_off, clk, counter_out);
     //Todo: add registers and wires, if needed
 	
     //Todo: add user logic
-	always @(posedge clk)
+	always @(posedge clk) 
 		begin
 		if (rst)
 			counter_out<=0;
