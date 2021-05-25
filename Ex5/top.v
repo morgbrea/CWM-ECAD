@@ -20,7 +20,7 @@ module aircond (clk, temperature, heating, cooling);
 	input clk;
 	input [4:0] temperature;
 	output reg [1:0] heating;
-	output reg [1:0]cooling; 
+	output reg [1:0] cooling; 
 
     //Todo: add registers and wires, if needed
 
@@ -33,14 +33,14 @@ module aircond (clk, temperature, heating, cooling);
 			cooling<=1'd0;
 			end
 		else if (temperature>=4'd20) //idle
-			(heating<=1'd0);
+			heating<=1'd0;
 		if (temperature>=4'd22) // if hot, cooling
 			begin
 			cooling<=1'd1;
 			heating<=1'd0;
 			end
 		else if (temperature<=4'd20) //idle
-			(cooling<=1'd0);	
+			cooling<=1'd0;	
 		end     
 endmodule
     
