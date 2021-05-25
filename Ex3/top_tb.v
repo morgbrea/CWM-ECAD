@@ -22,7 +22,7 @@ module top_tb(
 	reg change;
 	reg on_off;
 	reg err;
-	reg [7:0] counter_out;
+	wire [7:0] counter_out;
 	reg [7:0] a;
 
 //Todo: Clock generation
@@ -34,38 +34,56 @@ module top_tb(
 	end
 //Todo: User logic
 	initial begin
-	rst=1
+	rst=1;
 	change=0;
 	on_off=0;
 	err=0;
-	#CLK_PERIOD
+
 		forever begin
+			#CLK_PERIOD
 			if ((counter_out!=0'b0)&rst)
 			begin
 			$display("***TEST FAILED! did not count correctly!***",rst, change, on_off,counter_out);
 			err=1;
 			end
 			if (on_off) //on_off 1 shoud count up
-			a=counter_out
-			begin #CLK_PERIOD
+			begin 
+			a=counter_out;
+			#CLK_PERIOD
 				if (counter_out!=a+1'b1)
+				begin
 				$display("***TEST FAILED! did not count correctly!***",rst, change, on_off,counter_out);
-			err=1;
+				err=1;
+				end
 			end
-			else //on_off 0 shoud count down
-			a=counter_out
-			begin #CLK_PERIOD
+			else //on_off 0 should count down
+			begin
+			a=counter_out;
+			#CLK_PERIOD
 				if (counter_out!=a-1'b1)
+				begin
 				$display("***TEST FAILED! did not count correctly!***",rst, change, on_off,counter_out);
-			err=1;
+				err=1; 
+				end
 			end
 			if (change==0'b0)
-			a=counter_out
-			begin #CLK_PERIOD
+			begin 
+			a=counter_out;
+			#CLK_PERIOD
 				if (counter_out!=a)
+				begin
+				$display("***TEST FAILED! did not count correctly!***",rst, change, on_off,counter_out);
+				err=1;
+				end
+			end
+			if (counter_out>=256'd256)
+			begin
 				$display("***TEST FAILED! did not count correctly!***",rst, change, on_off,counter_out);
 			err=1;
 			end
+	end
+end
+
 //Todo: Finish test, check for success
 	initial begin
 	#(500*CLK_PERIOD)
@@ -74,7 +92,7 @@ module top_tb(
         $finish;
       end
 //Todo: Instantiate counter module
-	moniter (
+	monitor monitor1 (
 	.change (change),
 	.on_off (on_off),
 	.rst (rst),
