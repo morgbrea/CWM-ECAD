@@ -32,10 +32,8 @@ module top_tb(
 //Todo: User logic
 	initial begin
 		temperature=4'd5; // testing starting with 17?
-		err=1'd0;
-		heating=1'd0;
-		cooling=1'd0;
-
+		err=0;
+		
 		forever begin
 			#CLK_PERIOD
 			temperature=temperature+1'd1;

@@ -27,7 +27,7 @@ module aircond (clk, temperature, heating, cooling);
     //Todo: add user logic
 	always @(posedge clk) 
 		begin
-		if (temperature<=4'd18) // if cold, heating
+		if ((temperature=4'd18)|(temperature<4'd18)) // if cold, heating
 			begin
 			heating<=1'd1;
 			cooling<=1'd0;
