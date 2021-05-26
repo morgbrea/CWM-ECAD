@@ -31,28 +31,28 @@ module top_tb(
 
 //Todo: User logic
 	initial begin
-		temperature=4'd5; // testing starting with 17?
+		temperature=5'd5; // testing starting with 17?
 		err=0;
 		
 		forever begin
 			#CLK_PERIOD
-			temperature=temperature+1'd1;
-			if (temperature>=5'd30)
-				temperature=4'd5;
 				
-			if ((heating & (temperature>=4'd20))|(!heating & (temperature<=4'd18))) // test heating
+			if ((heating & (temperature>=5'd20))|(!heating & (temperature<=5'd18))) // test heating
 				begin
 				$display("***TEST FAILED! not the right state!***", temperature, heating, cooling);
 				err=1;
 				end
 
-			if ((cooling & (temperature<=4'd20))|(!cooling & (temperature>=4'd22))) // test cooling 
+			if ((cooling & (temperature<=5'd20))|(!cooling & (temperature>=5'd22))) // test cooling 
 				begin
 				$display("***TEST FAILED! not the right state!***", temperature, heating, cooling);
 				err=1;
 				end
 			
-
+			temperature=temperature+1'd1;
+			if (temperature>=5'd30)
+				temperature=5'd5;
+			
 		end
 	end
 
