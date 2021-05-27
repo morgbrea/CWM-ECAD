@@ -25,7 +25,7 @@ module doorbell(
 	input a,
 	input b, 
 	input sel,
-	output [23:0] out
+	output out
 	); 
 	//Todo: define registers and wires here
 	reg [23:0] out;
