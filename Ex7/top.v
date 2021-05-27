@@ -19,18 +19,19 @@
 
 module selector (clk, sel, rst, button, light);
     //Todo: add ports 
-	input clk;
-	input sel;
-	input rst;
-	input button;
-	output [23:0] light; 
+	input clk,
+	input sel,
+	input rst,
+	input button,
+	output [23:0] light
+	);
 	
 lights lights1 (
 	.rst(rst), 
 	.clk (clk), 
 	.button (button), 
 	.colour (colour)
-);
+	);
 
 converter converter1 ( 
 	.clk (clk),
