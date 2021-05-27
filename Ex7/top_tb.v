@@ -14,7 +14,7 @@ module top_tb(
 //Todo: Parameters
 	parameter CLK_PERIOD = 10;
 
-//Todo: Regitsers and wires
+//Todo: Registers and wires
 	reg clk;
 	reg sel;
 	reg rst;

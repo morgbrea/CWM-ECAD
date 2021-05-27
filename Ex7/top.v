@@ -26,6 +26,9 @@ module selector (
 	output [23:0] light
 	);
 	
+wire [2:0] colour;
+wire [23:0] rgb;
+
 lights lights1 (
 	.rst(rst), 
 	.clk (clk), 
