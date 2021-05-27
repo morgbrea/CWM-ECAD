@@ -54,49 +54,49 @@ module top_tb(
 		#(CLK_PERIOD)
 		if (light!=24'h0000FF)
 			begin
-			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
 			err=1;
 			end
 			
 		#(CLK_PERIOD)
 		if (light!=24'h00FF00)
 			begin
-			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
 			err=1;
 			end
 		
 		#(CLK_PERIOD)
 		if (light!=24'h00FFFF)
 			begin
-			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
 			err=1;
 			end
 		
 		#(CLK_PERIOD)
 		if (light!=24'hFF0000)
 			begin
-			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
 			err=1;
 			end
 		
 		#(CLK_PERIOD)
 		if (light!=24'hFF00FF)
 			begin
-			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
 			err=1;
 			end
 			
 		#(CLK_PERIOD)
 		if (light!=24'hFFFF00)
 			begin
-			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
 			err=1;
 			end
 		
 		#(CLK_PERIOD)
 		if (light!=24'hFFFFFF)
 			begin
-			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
 			err=1;
 			end
 			
