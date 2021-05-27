@@ -38,7 +38,7 @@ lights lights1 (
 
 converter converter1 ( 
 	.clk (clk),
-	.enable (1'b1),
+	.enable (!rst),
 	.colour (colour),
 	.rgb (rgb)
 	);
