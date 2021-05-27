@@ -35,14 +35,15 @@ module top_tb(
 		rst=1;
 		button=0;
 		err=0;
-		
+		#CLK_PERIOD
 		if ((colour!=3'b000)&rst) // testing for reset
 				begin
 				$display("***TEST FAILED! not the right colour!***", rst, button, colour);
 				err=1;
 				end
 		rst=0;
-				
+		
+		
 		forever begin
 			#CLK_PERIOD	//spend one clock period where you are
 			button=1;
