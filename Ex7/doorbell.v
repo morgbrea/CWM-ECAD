@@ -25,20 +25,17 @@ module doorbell(
 	input a,
 	input b, 
 	input sel,
-	output out
+	output [23:0] out
 	); 
 	//Todo: define registers and wires here
-	reg [23:0] out;
+	wire [23:0] out;
 	wire [23:0] a;
 	wire [23:0] b;
 	wire sel;
 
 
 	//Todo: define your logic here                 
-	always @(*) begin
-		if (sel) out=b;
-		else out=a;
- 	end
+	assign #5 out = sel?b:a;
 
 
 endmodule
