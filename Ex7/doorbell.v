@@ -35,7 +35,10 @@ module doorbell(
 
 
 	//Todo: define your logic here                 
-	assign #5 out = sel?b:a;
+	always @(*) begin
+		if (sel) out=b;
+		else out=a;
+ 	end
 
 
 endmodule
