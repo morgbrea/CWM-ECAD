@@ -113,7 +113,7 @@ module top_tb(
       end
       
 //Todo: Instantiate counter module
-	converter converter1 ( 
+	selector selector1 ( 
 	.clk (clk),
 	.sel (sel),
 	.rst (rst),
