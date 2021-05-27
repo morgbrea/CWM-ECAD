@@ -43,21 +43,22 @@ module top_tb(
 	#(CLK_PERIOD)
 	if (rst&(counter_out!=0))
 		begin
-		$display("***TEST FAILED! did not count correctly!*** %h, %h, %h, %h",rst, change, on_off,counter_out);
+		$display("***TEST FAILED! did not count correctly!Error line 46*** %h, %h, %h, %h",rst, change, on_off,counter_out);
 		err=1;
 		end
 	rst=0;
 
 		forever begin
-		on_off=1; //on_off 1 shoud count up
-
-		if (!change)
+		on_off=1; //on_off 1 should count up
+		change=1;
+		
+		if (change)
 		begin
 			a=counter_out;
 			#(CLK_PERIOD)
 			if (counter_out!=a+1'b1)
 				begin
-				$display("***TEST FAILED! did not count correctly!*** %h, %h, %h, %h",rst, change, on_off,counter_out);
+				$display("***TEST FAILED! did not count correctly!Error line 60*** %h, %h, %h, %h",rst, change, on_off,counter_out);
 				err=1;
 				end
 			
@@ -68,7 +69,7 @@ module top_tb(
 			#(CLK_PERIOD)
 			if (counter_out!=a-1'b1)
 				begin
-				$display("***TEST FAILED! did not count correctly!***%h, %h, %h, %h ",rst, change, on_off,counter_out);
+				$display("***TEST FAILED! did not count correctly!Error line 71***%h, %h, %h, %h ",rst, change, on_off,counter_out);
 				err=1; 
 				end
 		end	
@@ -78,13 +79,13 @@ module top_tb(
 		#(CLK_PERIOD)
 		if (counter_out!=a)
 			begin
-			$display("***TEST FAILED! did not count correctly!***%h, %h, %h, %h",rst, change, on_off,counter_out);
+			$display("***TEST FAILED! did not count correctly! Error line 81***%h, %h, %h, %h",rst, change, on_off,counter_out);
 			err=1;
 			end
 				
 		if (counter_out>=256'd256)
 			begin
-			$display("***TEST FAILED! did not count correctly!*** %h, %h, %h, %h",rst, change, on_off,counter_out);
+			$display("***TEST FAILED! did not count correctly!Error line 87*** %h, %h, %h, %h",rst, change, on_off,counter_out);
 			err=1;
 			end
 		
