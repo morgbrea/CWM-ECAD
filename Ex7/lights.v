@@ -21,7 +21,9 @@
 
 module lights (rst, clk, button, colour);
     //Todo: add ports 
-	input rst, clk, button;
+	input rst; 
+	input clk; 
+	input button;
 	output reg [2:0] colour; 
 
     //Todo: add registers and wires, if needed
@@ -31,9 +33,9 @@ module lights (rst, clk, button, colour);
 		begin
 		if (rst)
 			colour<=3'b000;
-		if (button & colour<=6)
+		if (button & colour<3'b110)
 			colour<=colour+3'b001;
-		else if ((button & colour==6)|(button & colour==7))
+		else if ((button & colour==3'b110)|(button & colour==3'b111))
 			colour<=3'b001;
 			
 		end     
