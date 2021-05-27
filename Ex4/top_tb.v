@@ -35,16 +35,20 @@ module top_tb(
 		rst=1;
 		button=0;
 		err=0;
-
-		forever begin
-			#CLK_PERIOD
-			if ((colour!=3'b000)&rst) // testing for reset
+		
+		if ((colour!=3'b000)&rst) // testing for reset
 				begin
 				$display("***TEST FAILED! not the right colour!***", rst, button, colour);
 				err=1;
 				end
+		rst=0;
+				
+		forever begin
+			#CLK_PERIOD	//spend one clock period where you are
+			button=1;
+			#CLK_PERIOD	//button on so change
 
-			if (button & colour<=6) // test incrementing colour by 1 up to colour 6
+			if (button & colour<3'b110) // test incrementing colour by 1 up to colour 6
 				begin 
 				a=colour;
 				#CLK_PERIOD
@@ -54,7 +58,7 @@ module top_tb(
 					err=1;
 					end
 				end
-			else if (button & (colour==6 | colour == 7)) // test cases 6 and 7 incrementing
+			else if (button & (colour==3'b110 | colour == 3'b111)) // test cases 6 and 7 incrementing
 				begin
 				#CLK_PERIOD
 				if (colour!=3'b001)
@@ -93,8 +97,9 @@ module top_tb(
 
 //Todo: Instantiate counter module
 	lights lights1 (
-	.button (button),
 	.rst (rst),
+	.clk (clk),
+	.button (button),
 	.colour (colour)
 	);
  
