@@ -22,16 +22,16 @@
 
 module doorbell(
 	//Todo: define inputs here
-	input [23:0] a,
-	input [23:0] b, 
+	input a,
+	input b, 
 	input sel,
 	output [23:0] out
 	); 
 	//Todo: define registers and wires here
-	wire a;
-	wire b;
+	reg [23:0] out;
+	wire [23:0] a;
+	wire [23:0] b;
 	wire sel;
-	reg out;
 
 
 	//Todo: define your logic here                 
