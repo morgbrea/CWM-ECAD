@@ -51,21 +51,54 @@ module top_tb(
 			end
 			
 		forever begin
-			#(CLK_PERIOD*2)
-			a=light;
-			colour=colour+1;
+		#(CLK_PERIOD)
+		if (light!=24'h0000FF)
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			err=1;
+			end
 			
+		#(CLK_PERIOD)
+		if (light!=24'h00FF00)
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			err=1;
+			end
+		
+		#(CLK_PERIOD)
+		if (light!=24'h00FFFF)
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			err=1;
+			end
+		
+		#(CLK_PERIOD)
+		if (light!=24'hFF0000)
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			err=1;
+			end
+		
+		#(CLK_PERIOD)
+		if (light!=24'hFF00FF)
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			err=1;
+			end
 			
-			
-			if (enable)
-				begin
-				#(CLK_PERIOD*10)
-					if (light==a)
-					begin
-					$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
-					err=1;
-					end
-				end
+		#(CLK_PERIOD)
+		if (light!=24'hFFFF00)
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			err=1;
+			end
+		
+		#(CLK_PERIOD)
+		if (light!=24'hFFFFFF)
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light)
+			err=1;
+			end
 			
 		end
 	end
@@ -82,9 +115,10 @@ module top_tb(
 //Todo: Instantiate counter module
 	converter converter1 ( 
 	.clk (clk),
-	.enable (enable),
-	.colour (colour),
-	.rgb (rgb)
+	.sel (sel),
+	.rst (rst),
+	.button (button),
+	.light (light)
 	);
  
 endmodule 
