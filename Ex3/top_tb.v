@@ -50,29 +50,30 @@ module top_tb(
 
 		forever begin
 		on_off=1; //on_off 1 shoud count up
-		#(CLK_PERIOD)
-		
-		a=counter_out;
-		#(CLK_PERIOD)
-		if (counter_out!=a+1'b1)
-			begin
-			$display("***TEST FAILED! did not count correctly!*** %h, %h, %h, %h",rst, change, on_off,counter_out);
-			err=1;
-			end
+
+		if (!change)
+		begin
+			a=counter_out;
+			#(CLK_PERIOD)
+			if (counter_out!=a+1'b1)
+				begin
+				$display("***TEST FAILED! did not count correctly!*** %h, %h, %h, %h",rst, change, on_off,counter_out);
+				err=1;
+				end
 			
 		
-		on_off=0;	//on_off 0 should count down
-		#(CLK_PERIOD)
-		a=counter_out;
-		#(CLK_PERIOD)
-		if (counter_out!=a-1'b1)
-			begin
-			$display("***TEST FAILED! did not count correctly!***%h, %h, %h, %h ",rst, change, on_off,counter_out);
-			err=1; 
-			end
-			
+			on_off=0;	//on_off 0 should count down
+
+			a=counter_out;
+			#(CLK_PERIOD)
+			if (counter_out!=a-1'b1)
+				begin
+				$display("***TEST FAILED! did not count correctly!***%h, %h, %h, %h ",rst, change, on_off,counter_out);
+				err=1; 
+				end
+		end	
 		change=0;
-		#(CLK_PERIOD)	 
+
 		a=counter_out;
 		#(CLK_PERIOD)
 		if (counter_out!=a)
