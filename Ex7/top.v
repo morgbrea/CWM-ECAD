@@ -43,7 +43,7 @@ converter converter1 (
 	.rgb (rgb)
 	);
 
-mutiplexer multiplexer1 (
+doorbell doorbell1 (
 	.a (24'hFFFFFF),
 	.b (rgb),
 	.sel (sel),

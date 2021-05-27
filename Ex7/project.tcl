@@ -23,7 +23,7 @@ set_property -dict [list CONFIG.Write_Width_A {24} CONFIG.Write_Depth_A {8} CONF
 
 read_verilog "lights.v" #is this lowest level module to top one?
 read_verilog "converter.v"
-read_verilog "multiplexer.v"
+read_verilog "doorbell.v"
 read_verilog "top.v"	#replicate for all added files
 read_verilog "top_tb.v"
 
