@@ -17,7 +17,7 @@
 `timescale 1ns / 100ps
 
 
-module selector (clk, sel, rst, button, light);
+module selector (
     //Todo: add ports 
 	input clk,
 	input sel,
