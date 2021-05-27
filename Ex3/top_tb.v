@@ -40,7 +40,7 @@ module top_tb(
 	on_off=0;
 	err=0;
 	
-	#(CLK_PERIOD*5)
+	#(CLK_PERIOD)
 	if (rst&(counter_out!=0))
 		begin
 		$display("***TEST FAILED! did not count correctly!*** %h, %h, %h, %h",rst, change, on_off,counter_out);
@@ -50,7 +50,7 @@ module top_tb(
 
 		forever begin
 		on_off=1; //on_off 1 shoud count up
-		#(CLK_PERIOD*5)
+		#(CLK_PERIOD)
 		
 		a=counter_out;
 		#(CLK_PERIOD)
@@ -62,7 +62,7 @@ module top_tb(
 			
 		
 		on_off=0;	//on_off 0 should count down
-		#(CLK_PERIOD*5)
+		#(CLK_PERIOD)
 		a=counter_out;
 		#(CLK_PERIOD)
 		if (counter_out!=a-1'b1)
@@ -72,7 +72,7 @@ module top_tb(
 			end
 			
 		change=0;
-		#(CLK_PERIOD*5)	 
+		#(CLK_PERIOD)	 
 		a=counter_out;
 		#(CLK_PERIOD)
 		if (counter_out!=a)
