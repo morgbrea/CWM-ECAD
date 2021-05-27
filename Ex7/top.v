@@ -34,13 +34,13 @@ lights lights1 (
 
 converter converter1 ( 
 	.clk (clk),
-	.enable (enable),
+	.enable (1'b1),
 	.colour (colour),
 	.rgb (rgb)
 	);
 
 mutiplexer multiplexer1 (
-	.a (23'hffffff),
+	.a (24'hFFFFFF),
 	.b (rgb),
 	.sel (sel),
 	.out (light)

@@ -34,19 +34,28 @@ module top_tb(
 	initial begin
 		sel=0;
 		err=0;
-		rst=1;
+		rst=0;
 		button=0;
-				
+
+		if (light!=24'hFFFFFF)		//check if sel=0 white light
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
+			err=1;
+			end
+		sel=1;
+		rst=1;				// if rst=1, colour={000}, rgb=light =24'b0 for sel=1
+		if (rst & sel & (light!=24'b0)
+			begin
+			$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
+			err=1;
+			end
+			
 		forever begin
 			#(CLK_PERIOD*2)
 			a=light;
 			colour=colour+1;
 			
-			if ((!sel)&(light!=23'hffffff))
-				begin
-				$display("***TEST FAILED! not the right colour!*** %h, %h, %h, %h", sel, rst, button, light);
-				err=1;
-				end
+			
 			
 			if (enable)
 				begin
