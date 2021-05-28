@@ -28,7 +28,6 @@ module top_tb(
 	initial
 	begin
 		clk_p = 1'b0;
-		clk_n = 1'b0;
 	forever
 		#(CLK_PERIOD/2) 
 		clk_p=~clk_p;
