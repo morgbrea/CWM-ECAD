@@ -20,7 +20,7 @@ module top_tb(
 	reg rst_n;
 	reg [4:0] temperature;
 	reg err;
-	reg [4:0] direction;
+	reg direction;
 	wire heating;
 	wire cooling;
 	
@@ -32,7 +32,7 @@ module top_tb(
 	forever
 		#(CLK_PERIOD/2) 
 		clk_p=~clk_p;
-		clk_n=~clk_n;
+		clk_n=~clk_p;
 	end
 
 //Todo: User logic
@@ -42,6 +42,7 @@ module top_tb(
 		temperature=5'd5;
 		err=0;
 		rst_n=1;
+		direction=1;
 		
 		#(CLK_PERIOD*2)
 		
@@ -70,7 +71,7 @@ module top_tb(
 			
 			forever begin
 				#CLK_PERIOD
-				direction= (temperature=5'd1)? 1: (temperature ==5'd31)?0:direction;
+				direction= (temperature==5'd1)? 1: (temperature ==5'd31)?0:direction;
 				temperature =direction?temperature+1:temperature-1;
 			end
 		end
