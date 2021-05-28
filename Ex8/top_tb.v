@@ -32,7 +32,7 @@ module top_tb(
 	forever
 		#(CLK_PERIOD/2) 
 		clk_p=~clk_p;
-		clk_n=~clk_p;
+		clk_n=~clk_n;
 	end
 
 //Todo: User logic
