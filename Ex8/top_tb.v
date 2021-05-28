@@ -91,7 +91,11 @@ top top1 (
 	.clk_p (clk_p),
 	.clk_n (clk_n),
 	.rst_n (rst_n),
-	.temperature (temperature), 
+	.temperature_0 (temperature_0), 
+	.temperature_1 (temperature_1), 
+	.temperature_2 (temperature_2),
+	.temperature_3 (temperature_3), 
+	.temperature_4 (temperature_4), 
 	.heating (heating),
 	.cooling (cooling)
 	);
