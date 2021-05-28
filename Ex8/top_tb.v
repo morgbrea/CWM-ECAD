@@ -17,6 +17,7 @@ module top_tb(
 //Todo: Registers and wires
 	reg clk_p;
 	reg clk_n;
+	reg rst_n;
 	reg [4:0] temperature;
 	reg err;
 	wire heating;
@@ -36,19 +37,29 @@ module top_tb(
 		clk_n=0;
 		temperature=5'd5;
 		err=0;
+		rst_n=1;
 		
+		#(CLK_PERIOD*2)
+		
+		if (clk_n!=0)		//check rst_n
+			begin
+			$display("***TEST FAILED! rst_n not workign!*** %h, %h, %h, %h, %h error line 46", clk_p, clk_n, temperature, err, rst_n);
+			err=1;
+			end
+			
+		rst_n=0;
 		forever begin
 			#CLK_PERIOD
 				
 			if ((heating & (temperature>=5'd20))|(!heating & (temperature<=5'd18))) // test heating
 				begin
-				$display("***TEST FAILED! not the right state!***", temperature, heating, cooling);
+				$display("***TEST FAILED! not the right state!*** %h, %h, %h, %h, %h error line 56", clk_p, clk_n, temperature, err, rst_n);
 				err=1;
 				end
 
 			if ((cooling & (temperature<=5'd20))|(!cooling & (temperature>=5'd22))) // test cooling 
 				begin
-				$display("***TEST FAILED! not the right state!***", temperature, heating, cooling);
+				$display("***TEST FAILED! not the right state!*** %h, %h, %h, %h, %h error line 62", clk_p, clk_n, temperature, err, rst_n);
 				err=1;
 				end
 			
@@ -71,6 +82,7 @@ module top_tb(
 design design1 (
 	.clk_p (clk_p),
 	.clk_n (clk_n),
+	.rst_n (rst_n),
 	.temperature (temperature), 
 	.heating (heating),
 	.cooling (cooling)
