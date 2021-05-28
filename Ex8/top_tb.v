@@ -46,7 +46,7 @@ module top_tb(
 		
 		if (clk_n!=0)		//check rst_n
 			begin
-			$display("***TEST FAILED! rst_n not workign!*** %h, %h, %h, %h, %h error line 46", clk_p, clk_n, temperature, err, rst_n);
+			$display("***TEST FAILED! rst_n not workign!*** %h, %h, %h, %h, %h error line 49", clk_p, clk_n, temperature, err, rst_n);
 			err=1;
 			end
 			
@@ -56,13 +56,13 @@ module top_tb(
 				
 			if ((heating & (temperature>=5'd20))|(!heating & (temperature<=5'd18))) // test heating
 				begin
-				$display("***TEST FAILED! not the right state!*** %h, %h, %h, %h, %h error line 56", clk_p, clk_n, temperature, err, rst_n);
+				$display("***TEST FAILED! not the right state!*** %h, %h, %h, %h, %h error line 59", clk_p, clk_n, temperature, err, rst_n);
 				err=1;
 				end
 
 			if ((cooling & (temperature<=5'd20))|(!cooling & (temperature>=5'd22))) // test cooling 
 				begin
-				$display("***TEST FAILED! not the right state!*** %h, %h, %h, %h, %h error line 62", clk_p, clk_n, temperature, err, rst_n);
+				$display("***TEST FAILED! not the right state!*** %h, %h, %h, %h, %h error line 65", clk_p, clk_n, temperature, err, rst_n);
 				err=1;
 				end
 			
