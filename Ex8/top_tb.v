@@ -32,8 +32,9 @@ module top_tb(
 	forever
 		#(CLK_PERIOD/2) 
 		clk_p=~clk_p;
-		clk_n=~clk_p;
+		
 	end
+	assign clk_n=~clk_p;
 
 //Todo: User logic
 	initial begin
