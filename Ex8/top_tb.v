@@ -22,14 +22,16 @@ module top_tb(
 	reg err;
 	wire heating;
 	wire cooling;
-	wire clk;
 	
 //Todo: Clock generation
 	initial
 	begin
-		clk = 1'b0;
+		clk_p = 1'b0;
+		clk_n = 1'b0;
 	forever
-		#(CLK_PERIOD/2) clk=~clk;
+		#(CLK_PERIOD/2) 
+		clk_p=~clk_p;
+		clk_n=~clk_n;
 	end
 
 //Todo: User logic
