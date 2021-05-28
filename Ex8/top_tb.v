@@ -20,6 +20,7 @@ module top_tb(
 	reg rst_n;
 	reg [4:0] temperature;
 	reg err;
+	reg [4:0] direction;
 	wire heating;
 	wire cooling;
 	
@@ -66,10 +67,12 @@ module top_tb(
 				err=1;
 				end
 			
-			temperature=temperature+1'd1;
-			if (temperature>=5'd30)
-				temperature=5'd5;
 			
+			forever begin
+				#CLK_PERIOD
+				direction= (temperature=5'd1)? 1: (temperature ==5'd31)?0:direction;
+				temperature =direction?temperature+1:temperature-1;
+			end
 		end
 	
 	end
