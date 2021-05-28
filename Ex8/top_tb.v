@@ -15,7 +15,12 @@ module top_tb(
 	parameter CLK_PERIOD = 10;
 
 //Todo: Registers and wires
-	
+	reg clk_p;
+	reg clk_n;
+	reg [4:0] temperature;
+	reg err;
+	wire heating;
+	wire cooling;
 	
 //Todo: Clock generation
 	initial
@@ -25,7 +30,35 @@ module top_tb(
 		#(CLK_PERIOD/2) clk=~clk;
 	end
 
+//Todo: User logic
+	initial begin
+		clk_p=0;
+		clk_n=0;
+		temperature=5'd5;
+		err=0;
+		
+		forever begin
+			#CLK_PERIOD
+				
+			if ((heating & (temperature>=5'd20))|(!heating & (temperature<=5'd18))) // test heating
+				begin
+				$display("***TEST FAILED! not the right state!***", temperature, heating, cooling);
+				err=1;
+				end
 
+			if ((cooling & (temperature<=5'd20))|(!cooling & (temperature>=5'd22))) // test cooling 
+				begin
+				$display("***TEST FAILED! not the right state!***", temperature, heating, cooling);
+				err=1;
+				end
+			
+			temperature=temperature+1'd1;
+			if (temperature>=5'd30)
+				temperature=5'd5;
+			
+		end
+	
+	end
 //Todo: Finish test, check for success
 	initial begin
 	#(500*CLK_PERIOD)
@@ -35,6 +68,12 @@ module top_tb(
       end
       
 //Todo: Instantiate counter module
-	
+design design1 (
+	.clk_p (clk_p),
+	.clk_n (clk_n),
+	.temperature (temperature), 
+	.heating (heating),
+	.cooling (cooling)
+	);
  
 endmodule 
