@@ -22,6 +22,7 @@ module top_tb(
 	reg err;
 	wire heating;
 	wire cooling;
+	wire clk;
 	
 //Todo: Clock generation
 	initial
@@ -79,7 +80,7 @@ module top_tb(
       end
       
 //Todo: Instantiate counter module
-design design1 (
+top top1 (
 	.clk_p (clk_p),
 	.clk_n (clk_n),
 	.rst_n (rst_n),

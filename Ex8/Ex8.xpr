@@ -6,7 +6,7 @@
 <Project Version="7" Minor="44" Path="/home/centos/CWM-ECAD/Ex8/Ex8.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="c3be10814526452787f332e483bc6fef"/>
+    <Option Name="Id" Val="82076e12d3634ccb9d4a499aebe4ad4f"/>
     <Option Name="Part" Val="xcvu9p-fsgd2104-2L-e"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -59,6 +59,13 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PPRDIR/aircond.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PPRDIR/top.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
