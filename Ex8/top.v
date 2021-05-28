@@ -41,9 +41,9 @@ module top(
 
 //Add logic here
 aircond aircond1(
-	clk (clk),
-	temperature (temperature),
-	heating (heating),
-	cooling (cooling)
+	.clk (clk),
+	.temperature (temperature),
+	.heating (heating),
+	.cooling (cooling)
 	);
 endmodule
