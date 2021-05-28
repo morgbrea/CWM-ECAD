@@ -18,7 +18,6 @@ module top(
     input clk_n,
      //Todo: add all other ports besides clk_n and clk_p 
     input [4:0] temperature,
-    input clk,
     output heating,	//output reg heating?
     output cooling	//same?
    );
