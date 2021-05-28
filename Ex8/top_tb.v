@@ -16,7 +16,7 @@ module top_tb(
 
 //Todo: Registers and wires
 	reg clk_p;
-	reg clk_n;
+	wire clk_n;
 	reg rst_n;
 	reg [4:0] temperature;
 	reg err;
