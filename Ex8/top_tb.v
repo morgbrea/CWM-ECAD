@@ -28,17 +28,17 @@ module top_tb(
 	initial
 	begin
 		clk_p = 1'b0;
-		clk_n = 1'b0;
+
 	forever
 		#(CLK_PERIOD/2) 
 		clk_p=~clk_p;
-		clk_n=~clk_n;
+
 	end
+	assign clk_n=~clk_p; 
 
 //Todo: User logic
 	initial begin
-		clk_p=0;
-		clk_n=0;
+
 		temperature=5'd5;
 		err=0;
 		rst_n=1;
@@ -48,12 +48,13 @@ module top_tb(
 		
 		if (clk_n!=0)		//check rst_n
 			begin
-			$display("***TEST FAILED! rst_n not workign!*** %h, %h, %h, %h, %h error line 49", clk_p, clk_n, temperature, err, rst_n);
+			$display("***TEST FAILED! rst_n not working!*** %h, %h, %h, %h, %h error line 49", clk_p, clk_n, temperature, err, rst_n);
 			err=1;
 			end
 			
 		rst_n=0;
 		forever begin
+
 			#CLK_PERIOD
 				
 			if ((heating & (temperature>=5'd20))|(!heating & (temperature<=5'd18))) // test heating
